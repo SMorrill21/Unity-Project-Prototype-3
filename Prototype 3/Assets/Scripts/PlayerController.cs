@@ -11,10 +11,13 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnim;
     private AudioSource playerAudioSource;
     private bool isOnGround = true;
+    private int jumpNumber = 0;
 
+    public int score = 0;
     public float jumpForce = 10;
     public float gravityModifier;
     public bool gameOver = false;
+    public bool sprint = false;
     public ParticleSystem explosionParticale;
     public ParticleSystem dirtParticale;
 
@@ -30,25 +33,38 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround == true && !gameOver)
+        if (Input.GetKeyDown(KeyCode.Space) && !gameOver && jumpNumber < 2)
         {
+            jumpNumber++;
             playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
             playerAnim.SetTrigger("Jump_trig");
             dirtParticale.Stop();
             playerAudioSource.PlayOneShot(jumpSound);
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            playerAnim.speed = 1.6f;
+            sprint = true;
+        }
+        else
+        {
+            playerAnim.speed = 1.25f;
+            sprint = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.CompareTag("Ground"))
+        if (!gameOver && collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+            jumpNumber = 0;
             dirtParticale.Play();
         }
-        else if (collision.gameObject.CompareTag("Obstacle"))
+        else if (!gameOver && collision.gameObject.CompareTag("Obstacle"))
         {
             Debug.Log("Game Over!");
             gameOver = true;

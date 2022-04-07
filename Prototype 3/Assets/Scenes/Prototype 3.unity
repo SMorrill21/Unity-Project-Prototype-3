@@ -427,7 +427,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59464c4d8fae7b488b1ffc059c5797c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 560566042176313346, guid: b912bee106e3cef45ad00099b3ba63e4, type: 3}
+  obstaclePrefab:
+  - {fileID: 560566042176313346, guid: b912bee106e3cef45ad00099b3ba63e4, type: 3}
+  - {fileID: 8242077820339563186, guid: 40cf262afbc71984ea04898e9da71947, type: 3}
+  - {fileID: 8381300897016646022, guid: 899d71a1d30ac1548a33ec7e7b5506b7, type: 3}
+  - {fileID: 7564842396703389145, guid: 13142b9fb30c9dd438131c39207affbc, type: 3}
 --- !u!4 &558041165
 Transform:
   m_ObjectHideFlags: 0
@@ -655,7 +659,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913613124}
   serializedVersion: 2
-  m_Mass: 60
+  m_Mass: 65
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -677,9 +681,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSound: {fileID: 8300000, guid: 08ab7053d586c458db3774d33c141a4b, type: 3}
   crashSound: {fileID: 8300000, guid: 913d6445ee8cc4152a9c18da590ee203, type: 3}
+  score: 0
   jumpForce: 600
   gravityModifier: 2
   gameOver: 0
+  sprint: 0
   explosionParticale: {fileID: 1895412832}
   dirtParticale: {fileID: 689156225}
 --- !u!4 &913613129 stripped
@@ -844,6 +850,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
+--- !u!1 &1764976473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1764976475}
+  - component: {fileID: 1764976474}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1764976474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764976473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe3da24dfd12ce441b0ba10a9b8a698d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1764976475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764976473}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.0391636, y: 7.5793386, z: -11.107414}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1895412832 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 9125212449759046732, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
